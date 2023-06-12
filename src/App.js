@@ -1,6 +1,8 @@
 import axios from "axios";
-import { useEffect } from "react";
+import React from "react";
+import { ReactDOM } from "react";
 import { useState } from "react";
+import { useEffect } from "react";
 import Feed  from "./Feed.jsx";
 function App() {
   const [articles, setArticles] = useState([]);
@@ -17,7 +19,7 @@ function App() {
   }, [])
   return(
     <>
-      <nav class="flex items-center justify-between flex-wrap bg-slate-900 p-6">
+      <nav class="flex items-center justify-between flex-wrap bg-slate-900 p-6 sticky top-0 z-50">
     <div class="flex items-center flex-shrink-0 text-white mr-6">
       <span class="font-semibold text-xl tracking-tight">NEWS+</span>
     </div>
@@ -28,7 +30,7 @@ function App() {
     </div>
     <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
       <div class="text-sm lg:flex-grow">
-        <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-teal-200 mr-4">
+        <a href="#LIVE" class="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-teal-200 mr-4">
           NEWS
         </a>
         <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-teal-200 mr-4">
@@ -41,9 +43,9 @@ function App() {
     </div>
   </nav>
   <div className="font-bold text-4xl text-white font-sans text-center">
-    <h1>Today's Tech Headlines: The Verge</h1>
+    <h1>Today's Tech Headlines</h1>
   </div>
-  <div className="grid grid-cols-2 gap-4 place-content-center rounded">
+  <div className="p-4 grid grid-cols-2 gap-4">
   {articles.map((item, i) => 
   <Feed 
   key={i}
@@ -51,6 +53,9 @@ function App() {
   link={item.item.link}
   author={item.item.author}
   date={item.item.pubDate}
+  contentSnippet={item.item.contentSnippet}
+  content={item.item.content}
+ 
   />
   )}
   </div>

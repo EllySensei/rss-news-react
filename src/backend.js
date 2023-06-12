@@ -2,7 +2,7 @@ import RSSParser from "rss-parser";
 import cors from "cors";
 import express from "express";
     let articles = [];
-    const engadget = "http://www.theverge.com/rss/full.xml"
+    const theVerge = "http://www.theverge.com/rss/full.xml"
     const parser = new RSSParser();
     const parse = async url => {
     const feed = await parser.parseURL(url);
@@ -11,7 +11,7 @@ import express from "express";
     })
 }
 
-parse(engadget);
+parse(theVerge);
 let app = express();
 app.use(cors());
 
